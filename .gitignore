@@ -1,0 +1,45 @@
+# Dependencies and generated web output
+node_modules/
+dist/
+
+# Android and local toolchains
+**/.gradle/
+android/**/build/
+android/local.properties
+android/app/src/main/assets/public/
+.android-tools/
+.browser-cache/
+.release-transfer/
+.gradle/
+
+# Private signing material — never commit
+*.jks
+*.keystore
+*.p12
+*.pfx
+**/keystore.properties
+**/key.properties
+**/keystore-password.txt
+**/signing-password*
+**/*PRIVATE*Signing*Backup*
+**/aiodragon-private/
+
+# Local credentials
+.env
+.env.*
+!.env.example
+!.env.template
+
+# Distributable binaries belong in Releases
+*.apk
+*.aab
+*.apks
+*.idsig
+
+# Local diagnostics and editor files
+*.log
+qa/results/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
