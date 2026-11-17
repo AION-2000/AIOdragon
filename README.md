@@ -1,135 +1,200 @@
 <div align="center">
 
-# AIOdragon
+# 🐉 AIOdragon
 
-**Take flight. Bring the fire.**
+### Rule the skies. Command the fire.
 
-A 3D dragon-riding aerial combat game set above a vast cloud sea.
+**A cinematic 3D dragon-flight and aerial-combat experience, powered by the browser and packaged for Android.**
 
-**JavaScript · Three.js · WebGL2 · Capacitor**
+[![Release](https://img.shields.io/badge/Release-v1.0.1-ef6c35?style=for-the-badge)](#release-status)
+[![Three.js](https://img.shields.io/badge/Three.js-WebGL2-111827?style=for-the-badge&logo=threedotjs)](#technology)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES%20Modules-303b59?style=for-the-badge&logo=javascript)](#technology)
+[![Android](https://img.shields.io/badge/Android-Capacitor-267d65?style=for-the-badge&logo=android)](#android-build)
+
+**[Overview](#overview) · [Features](#the-experience) · [Architecture](#architecture) · [Quick start](#quick-start) · [Android](#android-build) · [Credits](#credits--provenance)**
 
 </div>
 
-## About
+---
 
-AIOdragon combines dragon flight, elemental combat and a stylized fantasy world in a shared JavaScript codebase. Fly across mountain valleys, rivers and villages, face airborne enemies, and challenge the Cloud Titan.
+## Overview
 
-The project is developed under AIOVerse by [Shihab Shahriar Aion](https://github.com/AION-2000). It builds on a supplied Skyfire reference game, with documented integration, input, diagnostics, branding and Android packaging changes.
+**AIOdragon** takes players high above a cloud sea into a stylized fantasy world of dragon flight, elemental combat, airborne encounters, and boss battles. Its WebGL2 game is built with JavaScript and Three.js, with an Android release candidate packaged through Capacitor.
 
-> **Repository status:** Documentation has been initialized. The complete game source, Android project, screenshots and release artifacts have not yet been imported into this repository. The prepared Android release candidate is **1.0.1**, which removes the reference watermark. A buildable GitHub checkout will be available after the source import.
+The project is a **patched and repackaged derivative** of the supplied *Skyfire: Riders of the Cloud Sea / Skyfire-Touch* reference game. AIOdragon's work includes mobile-input and lifecycle improvements, diagnostics, quality-control helpers, updated branding, web bundling, Android packaging, and release checks. **The original gameplay systems, models, and much of the artwork remain inherited reference work.**
 
-## Game experience
+> [!IMPORTANT]
+> **Repository status:** This GitHub repository is currently **documentation-only**. The complete, buildable project exists in the separate **AIOdragon Android Release Kit** and has not yet been imported here. The instructions below apply **after** the game source, Android project, tests, and assets have been added. A README alone is not the game.
 
-- **Dragon flight:** wing-driven movement, banking, hovering, dives, boosts and evasive maneuvers.
-- **Aerial combat:** fire breath, charged fireballs, target locking and elemental progression.
-- **Enemies and encounters:** Shade Riders, drake flocks and the Cloud Titan boss.
-- **Survival mode:** escalating waves and locally saved records.
-- **A world above the clouds:** toon shading, terrain, water, vegetation and volumetric clouds.
-- **Multiple perspectives:** chase camera, rider view and photo mode.
-- **Flexible controls:** touch, keyboard, mouse and gamepad input paths.
-- **Procedural audio:** synthesized effects and music through WebAudio.
+## The experience
 
-These features originate in the reference implementation and its documented patches; their presence is not a claim that every feature has passed native-device acceptance.
+| System | Experience |
+| :-- | :-- |
+| 🐉 **Dragon flight** | Banking, hovering, dives, boosts, and evasive maneuvers |
+| 🔥 **Elemental combat** | Fire breath, charged attacks, target engagement, and effects |
+| ⚔️ **Encounters** | Airborne enemies and a Cloud Titan boss encounter |
+| 🌪️ **Survival** | Escalating waves and locally saved records |
+| 🌄 **World & atmosphere** | Terrain, waterways, stylized clouds, vegetation, and atmospheric rendering |
+| 🎥 **Camera & presentation** | Chase camera, rider perspective, and photo mode |
+| 🎮 **Controls** | Keyboard, mouse, touch, and gamepad input paths |
+| 🎵 **Audio** | Procedural music and sound using Web Audio |
 
-## Platform status
+*These systems are present in the inherited reference and documented patches. This does not certify native-device performance or a completed campaign playthrough.*
 
-| Target | Current status |
-| --- | --- |
-| Android | Signed APK and AAB release candidate prepared with Capacitor |
-| Browser | WebGL2 game served through a local HTTP server |
-| iOS | Intended target; no native iOS release has been produced |
-| Windows | Browser launchers available; no new native Windows installer in this release |
+## Technology
 
-### Android release identity
-
-| Setting | Value |
-| --- | --- |
-| Application ID | `com.aioverse.aiodragon` |
-| Version | `1.0.1` |
-| Version code | `2` |
-| Minimum Android version | Android 8 / API 26 |
-| Target SDK | API 36 |
-| WebView requirement | Android System WebView 100+ with WebGL2 |
-| Orientation | Landscape |
-| Local app origin | `https://localhost` |
-
-The Android build bundles ES modules with esbuild and includes immersive fullscreen, keep-awake and background input-release integration.
+| Layer | Technologies |
+| :-- | :-- |
+| Game runtime | JavaScript ES Modules, Three.js, WebGL2 |
+| 3D content | GLB models, terrain data, textures, effects |
+| Architecture | Fixed-step simulation, system registry, events, quality and diagnostics |
+| Interface | HTML, CSS, HUD, touch and device input |
+| Android | Capacitor 8, Gradle, Android Studio |
+| Tooling | Node.js, npm, esbuild |
+| Quality | Node test runner, jsdom, Playwright |
 
 ## Architecture
 
-A system-based game core coordinates rendering, input and simulation. Feature systems expose lifecycle hooks for initialization, fixed updates and frame updates.
+The full release kit has the following layout:
 
-| Layer | Responsibility |
-| --- | --- |
-| Core | Fixed-step simulation, system registry, events, quality and diagnostics |
-| Actors and combat | Dragon physics, riders, enemies, weapons and boss encounters |
-| World and rendering | Terrain, water, sky, clouds, materials and post-processing |
-| UI and input | Menus, HUD, settings, touch controls and device input |
-| Audio and effects | Procedural sound, particles and combat feedback |
-| Platform integration | Web bundling and Capacitor Android packaging |
+\`\`\`text
+AIOdragon/
+├── game/
+│   ├── src/
+│   │   ├── core/          # Simulation, events, input and diagnostics
+│   │   ├── actors/        # Dragons, riders, enemies, progression
+│   │   ├── combat/        # Weapons and combat effects
+│   │   ├── world/         # Terrain, clouds, sky, vegetation and water
+│   │   ├── render/        # Atmosphere, pipeline, materials
+│   │   ├── camera/        # Camera systems
+│   │   ├── audio/         # Sound and music
+│   │   ├── ui/            # Menus, HUD and touch controls
+│   │   └── vfx/           # Visual effects
+│   ├── assets/            # GLB models and textures
+│   ├── vendor/            # Bundled third-party modules
+│   └── index.html
+├── android/                # Capacitor / Gradle project
+├── scripts/                # Web and Android build scripts
+├── qa/                     # Core, touch, browser and static QA
+├── store/                  # Graphics, screenshots and store guidance
+├── package.json
+├── capacitor.config.json
+└── SOURCE-ATTRIBUTION.md
+\`\`\`
 
-## Run the prepared source package
+## Quick start
 
-The commands below apply to the complete release kit, **not the documentation-only checkout currently in this repository**.
+**Prerequisites:** Node.js **22+**, npm, and a modern browser supporting **WebGL2**.
 
-### Browser development
+Once the source has been imported:
 
-Install Node.js 22 or newer, extract the release kit, and open a terminal in the project directory:
-
-```sh
+\`\`\`bash
+git clone https://github.com/AION-2000/AIOdragon.git
+cd AIOdragon
 npm ci
 npm start
-```
+\`\`\`
 
-Open the local URL printed by the server. Serve the game over HTTP; do not open `index.html` with `file://`.
+Open the local URL printed by the server. The game must be served over HTTP; opening \`game/index.html\` through \`file://\` is not supported for ES modules and local assets.
 
-### Android build
+### Developer commands
 
-Install a full JDK 21, Android SDK Platform 36 and Build Tools 36.0.0. Configure `JAVA_HOME` and `ANDROID_HOME`, accept SDK licenses, and restore the private signing backup outside the project directory.
+| Command | Action |
+| :-- | :-- |
+| \`npm start\` | Start the local game server |
+| \`npm test\` | Run Node unit tests |
+| \`npm run build\` | Build the production web bundle |
+| \`npm run test:browser\` | Run Playwright browser QA |
+| \`npm run android:sync\` | Build and sync assets to Android |
+| \`npm run android:open\` | Open the native project in Android Studio |
 
-```sh
+For browser QA, run \`npx playwright install chromium\` after installing dependencies.
+
+## Android build
+
+The Android release wraps the browser game through **Capacitor**, with landscape orientation, immersive fullscreen, wake-lock integration, and lifecycle/input cleanup.
+
+| Setting | Value |
+| :-- | :-- |
+| App ID | \`com.aioverse.aiodragon\` |
+| Release candidate | \`1.0.1\` |
+| Version code | \`2\` |
+| Minimum Android | Android 8 · API 26 |
+| Target SDK | API 36 |
+| Orientation | Landscape |
+
+**Toolchain:** JDK **21**, Android SDK Platform **36**, Build Tools **36.0.0**, Android Studio.
+
+\`\`\`bash
 npm ci
-node scripts/configure-signing.mjs /absolute/path/to/private-signing-backup
+npm run android:sync
+npm run android:open
+\`\`\`
+
+### Signed release
+
+Restore the **existing private signing backup** outside the repository, then:
+
+\`\`\`bash
+node scripts/configure-signing.mjs /path/to/PRIVATE-SIGNING-BACKUP
 npm run android:release
-```
+\`\`\`
 
-Build outputs:
+Expected outputs:
 
-- `android/app/build/outputs/apk/release/app-release.apk`
-- `android/app/build/outputs/bundle/release/app-release.aab`
+- \`android/app/build/outputs/apk/release/app-release.apk\` — sideload / direct installation
+- \`android/app/build/outputs/bundle/release/app-release.aab\` — Google Play submission
 
-Use the APK for direct installation and the AAB for Google Play submissions. Keep the same signing identity and increase the version code for subsequent updates.
+**Never commit signing keys, signing passwords, private backup ZIPs, \`keystore.properties\`, or generated APK/AAB binaries.** The original signing identity is required for compatible app updates.
 
-### Checks
+## Quality & testing
 
-```sh
-npm test
-npx playwright install chromium
-npm run test:browser
-```
+The prepared **1.0.1 release candidate** passed reported Android build, signature, package-identity, and watermark-removal checks. The release kit also contains browser-emulated screenshot evidence.
 
-## Release validation
+**Not yet validated:** complete gameplay on a physical Android device, sustained frame rate and memory use, long-session battery/thermal behavior, audio routing, background/resume reliability, and end-to-end campaign completion.
 
-The prepared 1.0.1 candidate passed Android build and signature verification. Packaged HTML and JavaScript were checked against the web bundle, and the watermark image and overlay were confirmed absent. Updated mobile-emulated browser captures completed without recorded browser errors.
+Browser-emulated screenshots are not evidence of physical-device FPS or compatibility. The release kit includes QA notes, test reports, and release verification artifacts.
 
-The preceding 1.0.0 baseline passed 14 core/input tests. Native-phone installation, sustained frame rate, audio and background/resume behavior, ten-minute memory stability, and a complete campaign playthrough still require acceptance testing. Browser emulation is not a substitute for real-device testing.
+## Release status
 
-## Privacy and storage
+**v1.0.1 — Android release candidate; not a Google Play production release.**
 
-The current release has no accounts, ads, analytics or in-app purchases. Settings and records are stored locally. The release kit includes a privacy policy and Data Safety guidance. A public privacy-policy URL and a monitored support email must be configured before store submission.
+- Configured the app identity as AIOdragon.
+- Removed the unwanted reference watermark from the bundled game.
+- Retained the signing identity required for an update.
+- Added Android build and package verification.
+- Prepared store material and checklists.
+- Documented remaining acceptance work explicitly.
 
-## Source provenance and asset rights
+A public privacy-policy URL, monitored support address, physical-device checks, and Google Play review are still outstanding.
 
-AIOdragon is a patched derivative of the supplied **Skyfire: Riders of the Cloud Sea** reference. Original gameplay systems, models, textures and bundled vendor code are retained where documented. The 1.0.1 update removes the on-screen reference watermark; it does not change underlying asset ownership or licensing.
+## Privacy & security
 
-The complete release kit includes `SOURCE-ATTRIBUTION.md` and `THIRD-PARTY-LICENSES.txt`. No blanket open-source license is granted to third-party assets by this README.
+This candidate has no game accounts, advertising SDK, analytics SDK, or in-app purchases. Settings and records are stored locally. Before publication, review the release kit's data-safety guidance and actual store requirements.
 
-## Signing security
+## Roadmap
 
-Private keystores, signing passwords, `keystore.properties` and private backup archives must never be committed. Public application source and store artwork are separate from signing credentials.
+- [ ] Import the audited source, Android project, assets, and screenshots into GitHub.
+- [ ] Validate launch, touch controls, rendering, and audio on physical Android devices.
+- [ ] Measure sustained FPS, memory use, battery and temperature.
+- [ ] Add automated CI for web builds and tests.
+- [ ] Finish support/privacy URLs and store compliance.
+- [ ] Publish an approved release once acceptance is complete.
 
-## Maintainer
+## Credits & provenance
 
-**Shihab Shahriar Aion · AIOVerse**
+**AIOdragon · AIOVerse**, maintained by **Shihab Shahriar Aion**.
 
-[GitHub](https://github.com/AION-2000) · [Report an issue](https://github.com/AION-2000/AIOdragon/issues)
+AIOdragon builds on the supplied **Skyfire-Touch / Skyfire: Riders of the Cloud Sea** reference. Inherited gameplay, art, assets, and vendor libraries are not claimed as entirely new AIOVerse creations.
+
+The source kit includes **SOURCE-ATTRIBUTION.md** and **THIRD-PARTY-LICENSES.txt**, which describe the authorship boundary and bundled MIT-licensed vendor code, including Three.js and meshoptimizer. **Do not assume that the complete derivative, including reference gameplay and artwork, is open-source or freely redistributable.** No blanket license is granted by this README.
+
+---
+
+<div align="center">
+
+### Built for the sky. Engineered for the next flight.
+
+**AIOVerse** · [GitHub profile](https://github.com/AION-2000) · [Issues](https://github.com/AION-2000/AIOdragon/issues)
+
+</div>
