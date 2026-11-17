@@ -6,17 +6,17 @@ The game source is in **AIOdragon-GitHub-Ready-Source.zip**, not in the document
 
 1. Download and **extract** the complete source ZIP. Do not run it inside the archive.
 2. Install Git for Windows and sign in to GitHub with an account that has write access to [AION-2000/AIOdragon](https://github.com/AION-2000/AIOdragon).
-3. Open PowerShell in the extracted \`AIOdragon\` directory.
+3. Open PowerShell in the extracted `AIOdragon` directory.
 4. Run:
 
-\`\`\`powershell
+```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\publish-to-github.ps1
-\`\`\`
+```
 
-The script clones the existing repository into an **AIOdragon-github** sibling folder, copies the prepared source (without touching the original checkout's Git metadata), stages the files, creates a commit, and pushes to \`main\`. GitHub login may be required.
+The script clones the existing repository into an **AIOdragon-github** sibling folder, copies the prepared source (without touching the original checkout's Git metadata), stages the files, creates a commit, and pushes to `main`. GitHub login may be required.
 
-**Verify:** Open the repository and confirm \`game/\`, \`android/\`, \`qa/\`, \`store/\`, and \`scripts/\` appear.
+**Verify:** Open the repository and confirm `game/`, `android/`, `qa/`, `store/`, and `scripts/` appear.
 
 ## Security and licensing
 
-Do not publish the separate private signing-backup ZIP or passwords. The reference game and original artwork are inherited from the supplied Skyfire project and may have redistribution restrictions. Confirm the right to publicly distribute those assets before pushing to a public repository; see \`SOURCE-ATTRIBUTION.md\`.
+Do not publish the separate private signing-backup ZIP or passwords. The reference game and original artwork are inherited from the supplied Skyfire project and may have redistribution restrictions. Confirm the right to publicly distribute those assets before pushing to a public repository; see `SOURCE-ATTRIBUTION.md`.
